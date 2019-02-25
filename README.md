@@ -1,9 +1,31 @@
 <h1>API - Gateway de Pagamentos</h1>
 
-<p>API capaz de enviar requisições de compras, para empresas processadoras de pagamentos, adquirentes, e oferecer ao lojista um único ponto de integração para várias adquirentes</p>
+<p>API capaz de enviar requisições de compras, para empresas processadoras de pagamentos, adquirentes, e oferecer ao lojista um único ponto de integração para várias adquirentes.</p>
+
+<p><strong>ATENÇÃO: </strong> Nesta versão disponível, apenas a integração com a API da Cielo está disponível.</p>
 
 <h2>Instalação</h2>
-<h3>Arquivo de configuração</h3>
+
+<h3>Instalar pacotes com as dependências do projeto</h3>
+
+<p>Abrir o prompt de commando e executar o comando abaixo:</p>
+
+<code>npm install</code>
+
+<h3>Atualizar o arquivo de configuração</h3>
+
+<p>As seguintes Keys devem ser atualizadas</p>
+
+<h4>String de conexão o banco de dados (MongoDB)</h4>
+<code>"PaymentGatewayAPIDb": "*********"</code>
+
+<h4>Chaves para acesso a API da Cielo (SandBox)</h4>
+<code>
+"MerchantId": "*********",
+"MerchantKey": "**********"
+</code>
+
+<h4>Arquivo de configuração final</h4>
 
 {
 	"ConnectionStrings": {
@@ -40,8 +62,6 @@
 		}
 	}
 }
-
-
 
 <h1>Uso das Apis</h1>
 
