@@ -1,20 +1,69 @@
+<h1>API - Gateway de Pagamentos</h1>
+
+<p>API capaz de enviar requisições de compras, para empresas processadoras de pagamentos, adquirentes, e oferecer ao lojista um único ponto de integração para várias adquirentes</p>
+
+<h2>Instalação</h2>
+<h3>Arquivo de configuração</h3>
+
+{
+	"ConnectionStrings": {
+		"PaymentGatewayAPIDb": "*********"
+	},
+	"AntiFraudConfigurations": {
+		"Url": "http://localhost",
+		"Port": "60420",
+		"LoginApi": "/api/auth/login",
+		"OrderApi": "/api/order"
+	},
+	"GatewayCieloConfigurations": {
+		"Url": "https://apisandbox.cieloecommerce.cielo.com.br",
+		"SalesApi": "/1/sales/",
+		"MerchantId": "*********",
+		"MerchantKey": "**********"
+	},
+	"TokenConfigurations": {
+		"Audience": "ExemploAudience",
+		"Issuer": "ExemploIssuer",
+		"Seconds": 300
+	},
+	"Logging": {
+		"IncludeScopes": false,
+		"Debug": {
+			"LogLevel": {
+				"Default": "Warning"
+			}
+		},
+		"Console": {
+			"LogLevel": {
+				"Default": "Warning"
+			}
+		}
+	}
+}
+
+
+
 <h1>Uso das Apis</h1>
+
+<p>As Apis utilizam JWT (Json Web Token) para realizar a autenticação, para tanto se faz necessário o registro para a obtenção de uma Chave para utilização da Api (ApiKey). Este registro deve ser feito utilizando a Api (/api/auth/register) enviando no corpo da requisição os seguintes parametros:</p>
+
+<h2>Register Api</h2>
 
 http://localhost:55896/api/auth/register
 
-<h2>Request</h2>
-
+<h3>Request</h3>
+<code>
 {
-	"Name":"Marcus Design",
-	"IdetificationNumber":"04610683000150",
-	"Email":"teste@gmail.com",
-	"HasAntiFraud":"true",
-	"AntiFraudApiKey":"sdlfjdsHGHJHHdkdk337dskde",
-	"AntiFraudClientID":"2894",
-	"AntiFraudClientSecret":"dfklgdfkjhRTkes63"
+	"Name": "Marcus Design",
+	"IdetificationNumber": "04610683000150",
+	"Email": "teste@gmail.com",
+	"HasAntiFraud": "true",
+	"AntiFraudApiKey": "sdlfjdsHGHJHHdkdk337dskde",
+	"AntiFraudClientID": "2894",
+	"AntiFraudClientSecret": "dfklgdfkjhRTkes63"
 }
-
-<h2>Response</h2>
+</code>
+<h3>Response</h3>
 {
     "apiKey": "73fbd53f-39bf-4b80-8ceb-218eed9c1124",
     "message": "Registrado com sucesso.",
@@ -272,42 +321,4 @@ Nenhum parametro enviado
 }
 
 
-<h2>Arquivo de configuração</h2>
-
-{
-	"ConnectionStrings": {
-		"PaymentGatewayAPIDb": "*********"
-	},
-	"AntiFraudConfigurations": {
-		"Url": "http://localhost",
-		"Port": "60420",
-		"LoginApi": "/api/auth/login",
-		"OrderApi": "/api/order"
-	},
-	"GatewayCieloConfigurations": {
-		"Url": "https://apisandbox.cieloecommerce.cielo.com.br",
-		"SalesApi": "/1/sales/",
-		"MerchantId": "*********",
-		"MerchantKey": "**********"
-
-	},
-	"TokenConfigurations": {
-		"Audience": "ExemploAudience",
-		"Issuer": "ExemploIssuer",
-		"Seconds": 300
-	},
-	"Logging": {
-		"IncludeScopes": false,
-		"Debug": {
-			"LogLevel": {
-				"Default": "Warning"
-			}
-		},
-		"Console": {
-			"LogLevel": {
-				"Default": "Warning"
-			}
-		}
-	}
-}
 
