@@ -26,43 +26,41 @@
 </code>
 
 <h4>Arquivo de configuração final</h4>
-
 {
-	"ConnectionStrings": {
-		"PaymentGatewayAPIDb": "*********"
-	},
-	"AntiFraudConfigurations": {
-		"Url": "http://localhost",
-		"Port": "60420",
-		"LoginApi": "/api/auth/login",
-		"OrderApi": "/api/order"
-	},
-	"GatewayCieloConfigurations": {
-		"Url": "https://apisandbox.cieloecommerce.cielo.com.br",
-		"SalesApi": "/1/sales/",
-		"MerchantId": "*********",
-		"MerchantKey": "**********"
-	},
-	"TokenConfigurations": {
-		"Audience": "ExemploAudience",
-		"Issuer": "ExemploIssuer",
-		"Seconds": 300
-	},
-	"Logging": {
-		"IncludeScopes": false,
-		"Debug": {
-			"LogLevel": {
-				"Default": "Warning"
-			}
-		},
-		"Console": {
-			"LogLevel": {
-				"Default": "Warning"
-			}
-		}
-	}
+    "ConnectionStrings": {
+        "PaymentGatewayAPIDb": "********"
+    },
+    "AntiFraudConfigurations": {
+        "Url": "http://localhost",
+        "Port": "60420",
+        "LoginApi": "/api/auth/login",
+        "OrderApi": "/api/order"
+    },
+    "GatewayCieloConfigurations": {
+        "Url": "https://apisandbox.cieloecommerce.cielo.com.br",
+        "SalesApi": "/1/sales/",
+        "MerchantId": "",
+        "MerchantKey": ""
+    },
+    "TokenConfigurations": {
+        "Audience": "ExemploAudience",
+        "Issuer": "ExemploIssuer",
+        "Seconds": 300
+    },
+    "Logging": {
+        "IncludeScopes": false,
+        "Debug": {
+            "LogLevel": {
+                "Default": "Warning"
+            }
+        },
+        "Console": {
+            "LogLevel": {
+                "Default": "Warning"
+            }
+        }
+    }
 }
-
 <h1>Uso das Apis</h1>
 
 <p>As Apis utilizam JWT (Json Web Token) para realizar a autenticação, para tanto se faz necessário o registro para a obtenção de uma Chave para utilização da Api (ApiKey). Este registro deve ser feito utilizando a Api (/api/auth/register) enviando no corpo da requisição os seguintes parametros:</p>
@@ -83,6 +81,9 @@ http://localhost:55896/api/auth/register
 	"AntiFraudClientSecret": "dfklgdfkjhRTkes63"
 }
 </code>
+
+<h2>Login Api</h2>
+
 <h3>Response</h3>
 {
     "apiKey": "73fbd53f-39bf-4b80-8ceb-218eed9c1124",
@@ -103,8 +104,11 @@ apiKey
     "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6WyI0NDBjN2QzMS0wMGIwLTQ1ODMtOThmNS02YzIwNGY3OWVlNWQiLCI0NDBjN2QzMS0wMGIwLTQ1ODMtOThmNS02YzIwNGY3OWVlNWQiXSwianRpIjoiNTdmZDA3ODliYTRkNDNkZDkyMzUxMjE5MWMzY2Q5MWQiLCJuYmYiOjE1NTEwOTQxODYsImV4cCI6MTU1MTA5NDQ4NiwiaWF0IjoxNTUxMDk0MTg2LCJpc3MiOiJFeGVtcGxvSXNzdWVyIiwiYXVkIjoiRXhlbXBsb0F1ZGllbmNlIn0.fPpriczw0vAbpJMW9y0Kxf6vPKGSL75gZe3S9lF7VJTjaShxjhZxPHWifT0kSKvx4Yspjp5DqzsyZoaXTK3Rkm_vZRknj0bVtd6HRO4ckA7FgkBOB0rjCWpOLgkzglI4m5wJWU6L51kYR0WyfNb_X7cPZxGZigFw9so8MMFZ5GYskjzrQjtxcBrOmp8_hbChW_I4c7PDWLdFjaKqJmClTjf753BBYZsVYY1fHsU5LXtUNqih3GHAHrytwSc5lFvg9oR3ziDJ-mlA-zKOUq0TZB7v9VXozbEiHC3QFibB7SCnuvqnCHXDaDuEhVQKQReCz0qCU4TUgwhRQaFbae0RBQ"
 }
 
+<h2>Send Order Api</h2>
+
 http://localhost:55896/api/order/send
 <h2>Request</h2>
+
 {
 	"Date": "2018-02-23T18:25:43.511Z",
 	"Email": "test@api.com.br",
@@ -207,6 +211,8 @@ http://localhost:55896/api/order/send
         }
     }
 }
+
+<h2>List Order Api</h2>
 
 http://localhost:55896/api/order/list
 <h2>Request</h2>
