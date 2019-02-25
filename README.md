@@ -2,7 +2,12 @@
 
 API capaz de enviar requisições de compras, para empresas processadoras de pagamentos, adquirentes, e oferecer ao lojista um único ponto de integração para várias adquirentes.
 
-<strong>ATENÇÃO: </strong> Nesta versão disponível, apenas a integração com a API da Cielo está disponível.
+## Tecnologias empregadas
+- .Net Core 2 (WebApi)
+- JWT - Json Web Token
+- MongoDb
+
+**ATENÇÃO:** Nesta versão disponível, apenas a integração com a API da Cielo está disponível.
 
 ## Instalação
 
@@ -119,7 +124,7 @@ Redebe o Token que deve ser utilizado como parametro (apiKey)
 
 Utilizada para enviar as Ordem de Compra para a Api. É necessário que seja enviado no corpo da requisião (Body) as informações da compra, assim como as informações de pagamento.
 
-ATENÇÃO: Este é um modelo simplificado, que não contempla todas as informações de uma compra em uma aplicação real. 
+**ATENÇÃO:** Este é um modelo simplificado, que não contempla todas as informações de uma compra em uma aplicação real. 
 
 ```http
 POST http://localhost:55896/api/order/send
@@ -240,7 +245,7 @@ GET http://localhost:55896/api/order/list
 ````
 
 ## Request
-Nenhum parametro enviado 
+Nenhum parametro deve/precisa ser enviado 
 
 ## Response
 ```json
