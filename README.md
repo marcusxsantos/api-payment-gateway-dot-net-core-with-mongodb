@@ -97,7 +97,11 @@ POST http://localhost:55896/api/auth/register
 ```
 ## Login Api
 
-http://localhost:55896/api/auth/login?apiKey=apiKey
+Utilizada para realizar o login utlizando a chave de Api gerada durante o registro e, desta forma gerar o Token que deverá ser utilizado nas demais Apis.
+
+```http
+POST http://localhost:55896/api/auth/login?apiKey=apiKey
+```
 
 ## Request
 Redebe o Token que deve ser utilizado como parametro (apiKey)
@@ -113,7 +117,14 @@ Redebe o Token que deve ser utilizado como parametro (apiKey)
 ```
 ## Send Order Api
 
-http://localhost:55896/api/order/send
+Utilizada para enviar as Ordem de Compra para a Api. É necessário que seja enviado no corpo da requisião (Body) as informações da compra, assim como as informações de pagamento.
+
+ATENÇÃO: Este é um modelo simplificado, que não contempla todas as informações de uma compra em uma aplicação real. 
+
+```http
+POST http://localhost:55896/api/order/send
+````
+
 ## Request
 ```json
 {
@@ -222,7 +233,12 @@ http://localhost:55896/api/order/send
 ```
 ## List Order Api
 
-http://localhost:55896/api/order/list
+Lista todas as Ordens de Compra enviadas.
+
+```http
+GET http://localhost:55896/api/order/list
+````
+
 ## Request
 Nenhum parametro enviado 
 
