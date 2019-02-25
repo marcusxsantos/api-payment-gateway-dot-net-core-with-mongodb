@@ -84,8 +84,6 @@ http://localhost:55896/api/auth/register
 }
 </code>
 
-<h2>Login Api</h2>
-
 <h3>Response</h3>
 {
     "apiKey": "73fbd53f-39bf-4b80-8ceb-218eed9c1124",
@@ -93,10 +91,12 @@ http://localhost:55896/api/auth/register
     "status": "success"
 }
 
-http://localhost:55896/api/auth/login?apiKey=440c7d31-00b0-4583-98f5-6c204f79ee5d
+<h2>Login Api</h2>
+
+http://localhost:55896/api/auth/login?apiKey=apiKey
+
 <h2>Request</h2>
-Redebe o Token que deve ser utilizado como parametro
-apiKey
+Redebe o Token que deve ser utilizado como parametro (apiKey)
 
 <h2>Response</h2>
 {
