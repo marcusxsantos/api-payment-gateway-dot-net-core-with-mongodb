@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using PaymentGatewayAPI.Util;
 using System.Net;
 using PaymentGatewayAPI.Util.Enums;
+using PaymentGatewayAPI.Models.GatewayCielo;
 
 namespace PaymentGatewayAPI.Controllers
 {
@@ -113,6 +114,8 @@ namespace PaymentGatewayAPI.Controllers
 			
 			bool result = false;
 
+			GatewayCielo objPay = null;
+
 			if (statusAntiFraud == eAntiFraudSatus.NotRequired || statusAntiFraud == eAntiFraudSatus.Valid)
 			{
 				order.User = user;
@@ -144,7 +147,7 @@ namespace PaymentGatewayAPI.Controllers
 									Holder = order.Payment[i].CardHolderName,
 									ExpirationDate = order.Payment[i].CardExpirationDate,
 									SecurityCode = order.Payment[i].SecurityCode,
-									Brand = order.Payment[i].CardType
+									Brand = DefineCardBrandCielo(order.Payment[i].CardType)
 								}
 							}
 						});
@@ -158,12 +161,13 @@ namespace PaymentGatewayAPI.Controllers
 							clientCielo.DefaultRequestHeaders.Add("RequestId", "");
 
 							HttpResponseMessage response = await clientCielo.PostAsync(urlGateWayCielo, new StringContent(objJSonCielo, Encoding.UTF8, "application/json"));
-							if (response.StatusCode == HttpStatusCode.OK)
+
+							if (response.StatusCode == HttpStatusCode.Created)
 							{
 								response.EnsureSuccessStatusCode();
 								string responseBody = await response.Content.ReadAsStringAsync();
 
-								var obj = JsonConvert.DeserializeObject<AntiFraudAuthToken>(responseBody);
+								objPay = JsonConvert.DeserializeObject<GatewayCielo>(responseBody);
 							}
 							else {
 								BadRequest(new
@@ -189,9 +193,11 @@ namespace PaymentGatewayAPI.Controllers
 
 			if (result)
 				return Ok(new
-				{
+				{					
 					message = "Registrado com sucesso",
-					status = "success"
+					status = "success",
+					orderId = order.IdentificationCode,
+					Payment = objPay
 				});
 			else
 				return BadRequest(new
@@ -222,6 +228,21 @@ namespace PaymentGatewayAPI.Controllers
 					message = "Nenhum registro encontrado.",
 					status = "fail"
 				});
+		}
+
+		private string DefineCardBrandCielo(int cardType)
+		{
+			switch (cardType)
+			{
+				case 1: return   "Diners";
+				case 2: return   "MasterCard";
+				case 3: return   "Visa";
+				case 4: return   "Others";
+				case 5: return   "American Express";
+				case 6: return   "HiperCard";
+				case 7: return   "Aura";
+				default: return "";
+			}
 		}
 	}
 }
