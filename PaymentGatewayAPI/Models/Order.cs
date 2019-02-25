@@ -10,6 +10,8 @@ namespace PaymentGatewayAPI.Models
 		[BsonId]
 		[BsonRepresentation(BsonType.ObjectId)]
 		public string ID { get; set; }
+		[BsonElement("IdentificationCode")]
+		public string IdentificationCode { get; set; }
 		[BsonElement("Date")]
 		public DateTime Date { get; set; }
 		[BsonElement("Email")]
@@ -18,9 +20,9 @@ namespace PaymentGatewayAPI.Models
 		public double TotalItems { get; set; }
 		[BsonElement("TotalOrder")]
 		public double TotalOrder { get; set; }
-
+		public Payment[] Payment { get; set; }
 		public OrderItem[] Items { get; set; }
-
 		public User User { get; set; }
+		public BillingData BillingData { get; set; }
 	}
 }

@@ -27,6 +27,11 @@ namespace PaymentGatewayAPI
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.Configure<AuthorizationOptions>(options =>
+			{
+				options.AddPolicy("SendOrder", policy => policy.RequireClaim("Action", "SendOrder"));
+			});
+
 			services.AddTransient<IUserDao, UserDao>();
 			services.AddTransient<IUser, User>();
 			services.AddTransient<IOrderDao, OrderDao>();
@@ -39,6 +44,20 @@ namespace PaymentGatewayAPI
 				Configuration.GetSection("TokenConfigurations"))
 					.Configure(tokenConfigurations);
 			services.AddSingleton(tokenConfigurations);
+
+			var antiFraudConfigurations = new AntiFraudConfigurations();
+			new ConfigureFromConfigurationOptions<AntiFraudConfigurations>(
+				Configuration.GetSection("AntiFraudConfigurations"))
+					.Configure(antiFraudConfigurations);
+
+			services.AddSingleton(antiFraudConfigurations);
+
+			var gatewayCieloConfigurations = new GatewayCieloConfigurations();
+			new ConfigureFromConfigurationOptions<GatewayCieloConfigurations>(
+				Configuration.GetSection("GatewayCieloConfigurations"))
+					.Configure(gatewayCieloConfigurations);
+
+			services.AddSingleton(gatewayCieloConfigurations);
 
 			services.AddAuthentication(authOptions =>
 			{

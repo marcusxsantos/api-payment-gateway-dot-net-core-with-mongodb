@@ -21,13 +21,15 @@ namespace PaymentGatewayAPI.DAO
 			_orders = database.GetCollection<Order>("Orders");
 		}
 
-		public IList<IOrder> GetAll()
+		public object GetAll()
 		{
-			return (IList<IOrder>)_orders.Find(order => true).ToList();
+			var orders = _orders.Find(order => true).ToList();
+
+			return orders;
 		}
 
 		public bool Save(IOrder order)
-		{
+		{			
 			_orders.InsertOne((Order)order);
 			return true;
 		}

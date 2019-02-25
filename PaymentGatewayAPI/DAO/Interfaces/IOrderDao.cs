@@ -5,7 +5,7 @@ namespace PaymentGatewayAPI.DAO.Interfaces
 {
 	public interface IOrderDao
 	{
-		IList<IOrder> GetAll();
+		object GetAll();
 		bool Save(IOrder order);
 	}
 }

@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGatewayAPI", "PaymentGatewayAPI\PaymentGatewayAPI.csproj", "{DB93F6BD-79DC-414C-94D3-44C40B5340F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clear.Sale.Mock", "Clear.Sale.Mock\Clear.Sale.Mock.csproj", "{495F060E-44E9-4E8E-9228-80E654CD7767}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Clear.Sale.Mock", "Clear.Sale.Mock\Clear.Sale.Mock.csproj", "{495F060E-44E9-4E8E-9228-80E654CD7767}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

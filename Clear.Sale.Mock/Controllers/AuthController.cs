@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Clear.Sale.Mock.Model.Auth;
+using System;
 
 namespace Clear.Sale.Mock.Controllers
 {
@@ -17,7 +18,7 @@ namespace Clear.Sale.Mock.Controllers
 			_token = token;
 		}
 
-		[HttpGet]
+		[HttpPost]
 		[Route("login")]
 		public IActionResult Login([FromBody]RequestAuth request)		
 		{
@@ -25,7 +26,8 @@ namespace Clear.Sale.Mock.Controllers
 
 			if (login.IsValid())
 			{
-				_token.Value = "meLJgIWJq06fynaqEBMk69AkHTj7lXV0";
+				//Mock
+				_token.Value = "ded6a687514227ff822d40bd397f30f5ae9132487ad6c846599131c740d784f0";
 				_token.ExpirationDate = new System.DateTime(2019, 2, 28, 23, 59, 59);
 
 				_response.Token = _token;
@@ -39,8 +41,8 @@ namespace Clear.Sale.Mock.Controllers
 		}
 		[Route("logout")]
 		public void Logout([FromBody]RequestAuth request)
-		{			
-			//return new string[] { "value1-Logout1", "value2-Logout2" };
+		{
+			SignOut();
 		}
 	}
 }
