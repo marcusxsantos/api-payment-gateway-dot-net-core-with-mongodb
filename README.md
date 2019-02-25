@@ -1,31 +1,31 @@
-<h1>API - Gateway de Pagamentos</h1>
+# API - Gateway de Pagamentos
 
-<p>API capaz de enviar requisições de compras, para empresas processadoras de pagamentos, adquirentes, e oferecer ao lojista um único ponto de integração para várias adquirentes.</p>
+API capaz de enviar requisições de compras, para empresas processadoras de pagamentos, adquirentes, e oferecer ao lojista um único ponto de integração para várias adquirentes.
 
-<p><strong>ATENÇÃO: </strong> Nesta versão disponível, apenas a integração com a API da Cielo está disponível.</p>
+<strong>ATENÇÃO: </strong> Nesta versão disponível, apenas a integração com a API da Cielo está disponível.
 
-<h2>Instalação</h2>
+## Instalação
 
-<h3>Instalar pacotes com as dependências do projeto</h3>
+#### Instalar pacotes com as dependências do projeto
 
-<p>Abrir o prompt de commando e executar o comando abaixo:</p>
+Abrir o prompt de commando e executar o comando abaixo:
 
 <code>npm install</code>
 
-<h3>Atualizar o arquivo de configuração</h3>
+#### Atualizar o arquivo de configuração
 
-<p>As seguintes Keys devem ser atualizadas</p>
+As seguintes Keys devem ser atualizadas
 
-<h4>String de conexão o banco de dados (MongoDB)</h4>
+#### String de conexão o banco de dados (MongoDB)
 <code>"PaymentGatewayAPIDb": "*********"</code>
 
-<h4>Chaves para acesso a API da Cielo (SandBox)</h4>
+#### Chaves para acesso a API da Cielo (SandBox)
 <code>
 "MerchantId": "*********",
 "MerchantKey": "**********"
 </code>
 
-<h4>Arquivo de configuração final</h4>
+#### Arquivo de configuração final
 ```json
 {
     "ConnectionStrings": {
@@ -63,16 +63,19 @@
     }
 }
 ```
-<h1>Uso das Apis</h1>
+# Uso das Apis
 
-<p>As Apis utilizam JWT (Json Web Token) para realizar a autenticação, para tanto se faz necessário o registro para a obtenção de uma Chave para utilização da Api (ApiKey). Este registro deve ser feito utilizando a Api (/api/auth/register) enviando no corpo da requisição os seguintes parametros:</p>
+As Apis utilizam JWT (Json Web Token) para realizar a autenticação, para tanto se faz necessário o registro para a obtenção de uma Chave para utilização da Api (ApiKey). Este registro deve ser feito utilizando a Api (/api/auth/register) enviando no corpo da requisição
 
-<h2>Register Api</h2>
+## Register Api
 
-http://localhost:55896/api/auth/register
+Utilizada para registro do Lojista e obtenção de uma chave (apikey), que será utilizada para realizar a autenticação 
+```http
+POST http://localhost:55896/api/auth/register
+```
 
-<h3>Request</h3>
-<code>
+#### Request
+```json
 {
 	"Name": "Marcus Design",
 	"IdetificationNumber": "04610683000150",
@@ -82,35 +85,37 @@ http://localhost:55896/api/auth/register
 	"AntiFraudClientID": "2894",
 	"AntiFraudClientSecret": "dfklgdfkjhRTkes63"
 }
-</code>
+```
 
-<h3>Response</h3>
+#### Response
+```json
 {
     "apiKey": "73fbd53f-39bf-4b80-8ceb-218eed9c1124",
     "message": "Registrado com sucesso.",
     "status": "success"
 }
-
-<h2>Login Api</h2>
+```
+## Login Api
 
 http://localhost:55896/api/auth/login?apiKey=apiKey
 
-<h2>Request</h2>
+## Request
 Redebe o Token que deve ser utilizado como parametro (apiKey)
 
-<h2>Response</h2>
+## Response
+```json
 {
     "authenticated": true,
     "created": "2019-02-25 08:29:46",
     "expiration": "2019-02-25 08:34:46",
     "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6WyI0NDBjN2QzMS0wMGIwLTQ1ODMtOThmNS02YzIwNGY3OWVlNWQiLCI0NDBjN2QzMS0wMGIwLTQ1ODMtOThmNS02YzIwNGY3OWVlNWQiXSwianRpIjoiNTdmZDA3ODliYTRkNDNkZDkyMzUxMjE5MWMzY2Q5MWQiLCJuYmYiOjE1NTEwOTQxODYsImV4cCI6MTU1MTA5NDQ4NiwiaWF0IjoxNTUxMDk0MTg2LCJpc3MiOiJFeGVtcGxvSXNzdWVyIiwiYXVkIjoiRXhlbXBsb0F1ZGllbmNlIn0.fPpriczw0vAbpJMW9y0Kxf6vPKGSL75gZe3S9lF7VJTjaShxjhZxPHWifT0kSKvx4Yspjp5DqzsyZoaXTK3Rkm_vZRknj0bVtd6HRO4ckA7FgkBOB0rjCWpOLgkzglI4m5wJWU6L51kYR0WyfNb_X7cPZxGZigFw9so8MMFZ5GYskjzrQjtxcBrOmp8_hbChW_I4c7PDWLdFjaKqJmClTjf753BBYZsVYY1fHsU5LXtUNqih3GHAHrytwSc5lFvg9oR3ziDJ-mlA-zKOUq0TZB7v9VXozbEiHC3QFibB7SCnuvqnCHXDaDuEhVQKQReCz0qCU4TUgwhRQaFbae0RBQ"
 }
-
-<h2>Send Order Api</h2>
+```
+## Send Order Api
 
 http://localhost:55896/api/order/send
-<h2>Request</h2>
-
+## Request
+```json
 {
 	"Date": "2018-02-23T18:25:43.511Z",
 	"Email": "test@api.com.br",
@@ -153,8 +158,9 @@ http://localhost:55896/api/order/send
 		"Quantity": 3
 	}]
 }
-
-<h2>Response</h2>
+```
+## Response
+```json
 {
     "message": "Registrado com sucesso",
     "status": "success",
@@ -213,14 +219,15 @@ http://localhost:55896/api/order/send
         }
     }
 }
-
-<h2>List Order Api</h2>
+```
+## List Order Api
 
 http://localhost:55896/api/order/list
-<h2>Request</h2>
+## Request
 Nenhum parametro enviado 
 
-<h2>Response</h2>
+## Response
+```json
 {
     "orders": [          
         {
@@ -347,6 +354,4 @@ Nenhum parametro enviado
     "message": "Lista de Orders.",
     "status": "success"
 }
-
-
-
+```
