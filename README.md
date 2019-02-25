@@ -26,6 +26,7 @@
 </code>
 
 <h4>Arquivo de configuração final</h4>
+```json
 {
     "ConnectionStrings": {
         "PaymentGatewayAPIDb": "********"
@@ -61,6 +62,7 @@
         }
     }
 }
+```
 <h1>Uso das Apis</h1>
 
 <p>As Apis utilizam JWT (Json Web Token) para realizar a autenticação, para tanto se faz necessário o registro para a obtenção de uma Chave para utilização da Api (ApiKey). Este registro deve ser feito utilizando a Api (/api/auth/register) enviando no corpo da requisição os seguintes parametros:</p>
