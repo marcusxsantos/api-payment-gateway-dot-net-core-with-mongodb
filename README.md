@@ -15,7 +15,7 @@ API capaz de enviar requisições de compras, para empresas processadoras de pag
 
 Abrir o prompt de commando e executar o comando abaixo:
 
-<code>nuget install </code>
+<code>nuget restore PaymentGatewayAPI.sln </code>
 
 #### Atualizar o arquivo de configuração
 
