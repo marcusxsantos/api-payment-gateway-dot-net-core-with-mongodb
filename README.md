@@ -15,7 +15,7 @@ API capaz de enviar requisições de compras, para empresas processadoras de pag
 
 Abrir o prompt de commando e executar o comando abaixo:
 
-<code>npm install</code>
+<code>nuget install </code>
 
 #### Atualizar o arquivo de configuração
 
